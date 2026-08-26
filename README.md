@@ -1,29 +1,44 @@
 # 🎮 Video-juegos
 
-> Un rincón para aprender construyendo: scripts, ideas y juegos que invitan a jugar, probar y mejorar.
+Colección de proyectos para aprender creando: scripts y experiencias web para jugar, probar y seguir mejorando.
 
-## 🕹️ ¿Qué encontrarás aquí?
+## ✨ Novedades
 
-Este repositorio reúne proyectos creados con curiosidad y práctica. La idea es sencilla: convertir cada línea de código en una pequeña experiencia jugable y cada error en una oportunidad para aprender.
+- Repositorio reorganizado en un único proyecto: `sorteo-equipos-96`.
+- El sorteo de equipos ahora cuenta con dos versiones claramente separadas: una para terminal en Python y otra visual para navegador.
+- Se integró la interfaz web retro de **Sorteo 96**, con menú interactivo, efectos CRT y estilos inspirados en ISS/SNES.
+- Se eliminó la copia duplicada del script de Python para mantener un solo archivo fuente.
 
-- **Scripts creativos** para experimentar y automatizar ideas.
-- **Juegos divertidos** que nacen de probar, cambiar y volver a jugar.
-- **Aprendizaje propio y práctico**: aprender haciendo, sin miedo a empezar pequeño.
-- **Programas web** como espacio para transformar ideas en experiencias interactivas.
+## 📂 Estructura
 
-## 🚀 Forma de aprender
-
-1. Elige una idea que te dé curiosidad.
-2. Construye una versión sencilla.
-3. Pruébala, juega con ella y rompe algo sin querer.
-4. Corrige, mejora y comparte lo aprendido.
-
-## 📂 Exploración actual
-
-```
-nintendo snens/
-└── futbol/
-    └── Random96.py
+```text
+Video-juegos/
+├── README.md
+└── sorteo-equipos-96/
+    ├── script-python/
+    │   └── Random96.py
+    └── js-visual/
+        ├── index.html
+        ├── style.css
+        └── script.js
 ```
 
-Cada carpeta es un nivel nuevo. ¡Que empiece la partida! ✨
+## ⚽ Sorteo de equipos 96
+
+El proyecto permite armar sorteos de equipos de fútbol colombiano e internacional en modalidades como FPC, selecciones, ISSS, Mundial de Clubes y Total Random.
+
+### Versión Python
+
+Ejecuta el sorteo desde una terminal:
+
+```bash
+python sorteo-equipos-96/script-python/Random96.py
+```
+
+### Versión visual (HTML, CSS y JavaScript)
+
+Abre `sorteo-equipos-96/js-visual/index.html` directamente en tu navegador. También puedes abrir la carpeta con VS Code y usar la extensión **Live Server**.
+
+> La versión visual usa Tailwind CSS desde CDN; por eso necesita conexión a internet al abrirse.
+
+¡Que empiece la partida! 🕹️
