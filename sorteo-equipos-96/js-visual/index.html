@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SORTEO 96 — Fútbol Colombiano Retro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          pitch: {
+            DEFAULT: '#0B3D2E',
+            dark: '#062A20',
+            line: '#F4F1E8'
+          },
+          santafe: '#C1121F',
+          gold: '#FFB703',
+          navy: '#14213D',
+          amber: '#FDCA40'
+        },
+        fontFamily: {
+          pixel: ['"Press Start 2P"', 'cursive'],
+          mono96: ['"VT323"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-pitch text-pitch-line font-mono96 min-h-screen overflow-x-hidden relative">
+
+  <!-- Textura de cancha + scanlines -->
+  <div class="pitch-stripes" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+
+  <div class="relative z-10 min-h-screen flex flex-col items-center px-4 py-8 md:py-12">
+
+    <!-- HEADER -->
+    <header class="text-center mb-8 md:mb-10">
+      <p class="font-pixel text-[8px] md:text-[10px] text-gold tracking-widest mb-3 blink-slow">◆ CARGANDO CARTUCHO ◆</p>
+      <h1 class="font-pixel text-2xl sm:text-4xl md:text-5xl text-amber title-glow leading-tight">
+        SORTEO <span class="text-santafe">96</span>
+      </h1>
+      <p class="font-pixel text-[9px] sm:text-xs md:text-sm text-pitch-line/80 mt-4 tracking-wide">
+        FÚTBOL COLOMBIANO · EDICIÓN RETRO 🕹️
+      </p>
+      <div class="scoreline mt-5"></div>
+    </header>
+
+    <!-- CONSOLA PRINCIPAL -->
+    <main id="console" class="w-full max-w-2xl">
+
+      <!-- PANTALLA -->
+      <div class="console-screen relative">
+
+        <!-- Breadcrumb / ruta de navegación -->
+        <div id="breadcrumb" class="font-mono96 text-lg text-gold/90 mb-4 min-h-[1.5rem] tracking-wide"></div>
+
+        <!-- MENÚ PRINCIPAL -->
+        <section id="menu-principal" class="menu-panel">
+          <h2 class="panel-title">SELECCIONA UN MODO</h2>
+          <ul class="space-y-2" id="lista-principal"></ul>
+        </section>
+
+        <!-- SUBMENÚ -->
+        <section id="menu-sub" class="menu-panel hidden">
+          <h2 class="panel-title" id="sub-title">SUBMENÚ</h2>
+          <ul class="space-y-2" id="lista-sub"></ul>
+          <button id="btn-volver-principal" class="btn-volver">◀ VOLVER AL MENÚ</button>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section id="menu-resultados" class="menu-panel hidden">
+          <h2 class="panel-title" id="resultado-title">MARCADOR</h2>
+          <ol id="lista-resultados" class="space-y-1.5 font-mono96 text-xl md:text-2xl"></ol>
+          <div class="flex flex-col sm:flex-row gap-3 mt-6">
+            <button id="btn-repetir" class="btn-accion bg-santafe hover:bg-santafe/80">🔁 REPETIR SORTEO</button>
+            <button id="btn-nuevo" class="btn-accion bg-navy hover:bg-navy/70 border border-gold/40">🏠 MENÚ PRINCIPAL</button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- INSERT COIN -->
+      <p class="text-center font-pixel text-[9px] md:text-[10px] text-pitch-line/70 mt-6 blink-fast">
+        ▼ PULSA UNA OPCIÓN PARA CONTINUAR ▼
+      </p>
+    </main>
+
+    <footer class="mt-10 text-center font-mono96 text-base text-pitch-line/50">
+      <p>Hecho por Kevin Plazas · Proyecto personal ⚽🎮</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
