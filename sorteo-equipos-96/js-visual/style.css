@@ -1,0 +1,260 @@
+/* ===== SORTEO 96 — estética de menú de consola retro (ISS / PS1) ===== */
+
+html, body {
+  height: 100%;
+}
+
+/* Franjas de cancha de fútbol de fondo */
+.pitch-stripes {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(244, 241, 232, 0.025) 0px,
+      rgba(244, 241, 232, 0.025) 40px,
+      transparent 40px,
+      transparent 80px
+    ),
+    radial-gradient(ellipse at 50% -10%, #124a37 0%, #0B3D2E 45%, #062A20 100%);
+}
+
+/* Scanlines CRT */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  animation: flicker 6s infinite steps(2);
+}
+
+.crt-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+}
+
+@keyframes flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.92; }
+  98% { opacity: 1; }
+}
+
+/* Título con resplandor tipo cartel de estadio */
+.title-glow {
+  text-shadow:
+    0 0 6px rgba(255, 183, 3, 0.55),
+    0 0 18px rgba(255, 183, 3, 0.35),
+    3px 3px 0px rgba(6, 42, 32, 0.9);
+}
+
+/* Línea de marcador debajo del header */
+.scoreline {
+  width: min(420px, 80%);
+  height: 3px;
+  margin-inline: auto;
+  background: repeating-linear-gradient(
+    to right,
+    #F4F1E8 0, #F4F1E8 10px,
+    transparent 10px, transparent 18px
+  );
+  opacity: 0.5;
+}
+
+/* "Consola" contenedora */
+.console-screen {
+  background: linear-gradient(180deg, #0E2E23 0%, #0A2620 100%);
+  border: 3px solid #1c5b44;
+  border-radius: 0.5rem;
+  box-shadow:
+    inset 0 0 0 2px rgba(244, 241, 232, 0.08),
+    0 12px 0 0 #062A20,
+    0 14px 24px rgba(0,0,0,0.5);
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .console-screen { padding: 2.25rem; }
+}
+
+.panel-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  color: #FDCA40;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px dashed rgba(244, 241, 232, 0.25);
+}
+
+@media (min-width: 640px) {
+  .panel-title { font-size: 0.85rem; }
+}
+
+/* Ítems del menú tipo "cartucho" */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: #F4F1E8;
+  background: rgba(20, 33, 61, 0.55);
+  border: 2px solid rgba(244, 241, 232, 0.12);
+  border-left: 5px solid transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: border-color 0.12s ease, background-color 0.12s ease, transform 0.08s ease, padding-left 0.12s ease;
+}
+
+.menu-item:hover,
+.menu-item:focus-visible {
+  border-left-color: #FFB703;
+  background: rgba(193, 18, 31, 0.25);
+  padding-left: 1.35rem;
+  outline: none;
+}
+
+.menu-item:active {
+  transform: scale(0.99);
+}
+
+.menu-item .cursor-arrow {
+  color: #FFB703;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  flex-shrink: 0;
+}
+
+.menu-item:hover .cursor-arrow,
+.menu-item:focus-visible .cursor-arrow {
+  opacity: 1;
+}
+
+.btn-volver {
+  margin-top: 1.5rem;
+  font-family: "VT323", monospace;
+  font-size: 1.15rem;
+  color: #F4F1E8;
+  opacity: 0.75;
+  background: transparent;
+  border: 2px solid rgba(244, 241, 232, 0.25);
+  border-radius: 0.25rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-volver:hover {
+  opacity: 1;
+  border-color: #FFB703;
+}
+
+.btn-accion {
+  flex: 1;
+  font-family: "VT323", monospace;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: #F4F1E8;
+  padding: 0.7rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: filter 0.12s ease, transform 0.08s ease;
+}
+
+.btn-accion:hover {
+  filter: brightness(1.15);
+}
+
+.btn-accion:active {
+  transform: scale(0.98);
+}
+
+/* Filas de resultados estilo marcador de estadio (flip-in) */
+.resultado-fila {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.2rem;
+  background: rgba(244, 241, 232, 0.04);
+  border-left: 4px solid #FFB703;
+  opacity: 0;
+  transform: translateY(-6px) scaleY(0.6);
+  transform-origin: top;
+  animation: flip-in 0.35s ease forwards;
+}
+
+.resultado-fila:nth-child(odd) {
+  background: rgba(244, 241, 232, 0.07);
+}
+
+.resultado-fila .num {
+  color: #FFB703;
+  font-size: 1rem;
+  opacity: 0.8;
+  min-width: 1.6rem;
+}
+
+@keyframes flip-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(1px) scaleY(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* Parpadeos estilo arcade */
+.blink-slow {
+  animation: blink 1.8s steps(2, jump-none) infinite;
+}
+
+.blink-fast {
+  animation: blink 1s steps(2, jump-none) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.15; }
+}
+
+/* Transición simple entre paneles */
+.menu-panel {
+  animation: panel-in 0.25s ease;
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accesibilidad: respetar reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  .scanlines, .blink-slow, .blink-fast, .resultado-fila, .menu-panel {
+    animation: none !important;
+  }
+  .resultado-fila {
+    opacity: 1;
+    transform: none;
+  }
+}
